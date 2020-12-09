@@ -60,6 +60,17 @@
 				<mods:languageTerm><xsl:value-of select="." /></mods:languageTerm>
 			</mods:language>
 			</xsl:for-each>
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='publisher']/doc:element/doc:field[@name='value']">
+			<mods:originInfo>
+				<mods:publisher><xsl:value-of select="."/></mods:publisher>
+			</mods:originInfo>
+			</xsl:for-each>
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='relation']/doc:element[@name='ispartofseries']/doc:element/doc:field[@name='value']">
+			<mods:relatedItem type="series"><xsl:value-of select="." /></mods:relatedItem>
+			</xsl:for-each>
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='relation']/doc:element[@name='journal']/doc:element/doc:field[@name='value']">
+			<mods:relatedItem type="host"><xsl:value-of select="." /></mods:relatedItem>
+			</xsl:for-each>
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='rights']/doc:element/doc:element/doc:field[@name='value']">
 			<mods:accessCondition type="useAndReproduction"><xsl:value-of select="." /></mods:accessCondition>
 			</xsl:for-each>
@@ -74,6 +85,11 @@
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='title']/doc:element/doc:field[@name='value']">
 			<mods:titleInfo>
 				<mods:title><xsl:value-of select="." /></mods:title>
+			</mods:titleInfo>
+			</xsl:for-each>
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='title']/doc:element[@name='alternative']/doc:element/doc:field[@name='value']">
+			<mods:titleInfo>
+				<mods:title type="alternative"><xsl:value-of select="." /></mods:title>
 			</mods:titleInfo>
 			</xsl:for-each>
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='type']/doc:element/doc:field[@name='value']">

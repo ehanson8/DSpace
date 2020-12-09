@@ -91,6 +91,17 @@
 							<mods:language>
 								<mods:languageTerm authority="rfc3066"><xsl:value-of select="doc:metadata/doc:element[@name='dc']/doc:element[@name='language']/doc:element/doc:element/doc:field[@name='value']"></xsl:value-of></mods:languageTerm>
 							</mods:language>
+							<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='publisher']/doc:element/doc:field[@name='value']">
+							<mods:originInfo>
+								<mods:publisher><xsl:value-of select="text()"/></mods:publisher>
+							</mods:originInfo>
+							</xsl:for-each>
+							<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='relation']/doc:element[@name='ispartofseries']/doc:element/doc:field[@name='value']">
+							<mods:relatedItem type="series"><xsl:value-of select="text()" /></mods:relatedItem>
+							</xsl:for-each>
+							<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='relation']/doc:element[@name='journal']/doc:element/doc:field[@name='value']">
+							<mods:relatedItem type="host"><xsl:value-of select="text()" /></mods:relatedItem>
+							</xsl:for-each>
 							<mods:accessCondition type="useAndReproduction"><xsl:value-of select="doc:metadata/doc:element[@name='dc']/doc:element[@name='rights']/doc:element/doc:field[@name='value']"></xsl:value-of></mods:accessCondition>
 							<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='subject']/doc:element/doc:field[@name='value']">
 							<mods:subject>
@@ -100,6 +111,11 @@
 							<mods:titleInfo>
 								<mods:title><xsl:value-of select="doc:metadata/doc:element[@name='dc']/doc:element[@name='title']/doc:element/doc:field[@name='value']"></xsl:value-of></mods:title>
 							</mods:titleInfo>
+							<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='title']/doc:element[@name='alternative']/doc:element/doc:field[@name='value']">
+							<mods:titleInfo>
+								<mods:title type="alternative"><xsl:value-of select="text()" /></mods:title>
+							</mods:titleInfo>
+							</xsl:for-each>
 							<mods:genre><xsl:value-of select="doc:metadata/doc:element[@name='dc']/doc:element[@name='type']/doc:element/doc:field[@name='value']"></xsl:value-of></mods:genre>
 						</mods:mods>
 					</xmlData>
